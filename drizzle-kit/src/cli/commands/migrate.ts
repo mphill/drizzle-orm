@@ -394,6 +394,7 @@ export const prepareAndMigrateMysql = async (config: GenerateConfig) => {
 export const prepareAndMigrateSqlite = async (config: GenerateConfig) => {
 	const outFolder = config.out;
 	const schemaPath = config.schema;
+	const strict = config.strict ?? false;
 
 	try {
 		assertV1OutFolder(outFolder);
@@ -432,6 +433,8 @@ export const prepareAndMigrateSqlite = async (config: GenerateConfig) => {
 			columnsResolver,
 			validatedPrev,
 			validatedCur,
+			undefined,
+			true
 		);
 
 		writeResult({

@@ -122,6 +122,7 @@ export type GenerateConfig = {
 	prefix: Prefix;
 	custom: boolean;
 	bundle: boolean;
+	strict?: boolean;
 };
 
 export const prepareGenerateConfig = async (

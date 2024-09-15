@@ -22,6 +22,7 @@ export interface JsonSqliteCreateTableStatement {
 	}[];
 	compositePKs: string[][];
 	uniqueConstraints?: string[];
+	strict: boolean;
 }
 
 export interface JsonCreateTableStatement {
@@ -614,6 +615,7 @@ export const prepareMySqlCreateTableJson = (
 export const prepareSQLiteCreateTable = (
 	table: Table,
 	action?: 'push' | undefined,
+	strict?: boolean,
 ): JsonSqliteCreateTableStatement => {
 	const { name, columns, uniqueConstraints } = table;
 
@@ -636,6 +638,7 @@ export const prepareSQLiteCreateTable = (
 		referenceData: fks,
 		compositePKs: composites,
 		uniqueConstraints: Object.values(uniqueConstraints),
+		strict: strict ?? false,
 	};
 };
 

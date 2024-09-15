@@ -317,6 +317,7 @@ export class SQLiteCreateTableConvertor extends Convertor {
 			referenceData,
 			compositePKs,
 			uniqueConstraints,
+			strict
 		} = st;
 
 		let statement = '';
@@ -382,7 +383,7 @@ export class SQLiteCreateTableConvertor extends Convertor {
 		}
 
 		statement += `\n`;
-		statement += `);`;
+		statement += `) ${strict ? " STRICT" : ""};`;
 		statement += `\n`;
 		return statement;
 	}
